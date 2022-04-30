@@ -1,0 +1,2 @@
+# Uses latest Windows version of curl. Avoid bundled Windows 11 version by using an absolute path (Powershell prompt):
+&"C:\Program Files\curl\bin\curl.exe" -v --cacert '.\tech5billing.com.CA.crt' 'https://tech5billing.com:10443/version'

@@ -35,7 +35,7 @@ public class SecurityManager extends WebSecurityConfigurerAdapter {
 
         return username -> {
 
-            if (username.equals("interceptor.billing.tech5.ai")) {
+            if (username.equals("clienttech5billing.com")) {
 
                 return new User(username, "", AuthorityUtils.commaSeparatedStringToAuthorityList("SERVICE"));
 
