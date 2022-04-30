@@ -2,6 +2,8 @@ package ai.tech5.t5billing;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -19,8 +21,12 @@ public class SecurityManager extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").denyAll()
                 .antMatchers("/version").permitAll()
-                .antMatchers("/transaction").hasRole("SERVICE")
-                .and().x509().subjectPrincipalRegex("CN=(.*?),")
+                .antMatchers("/transaction").authenticated()
+                .antMatchers("/transaction").hasAuthority("SERVICE")
+                .and()
+                .x509()
+                //.subjectPrincipalRegex("CN=(.*?),")
+                //.subjectPrincipalRegex("CN=(.*?)(?:,|$)")
                 .userDetailsService(userDetailsServiceManager());
     }
 
@@ -29,7 +35,7 @@ public class SecurityManager extends WebSecurityConfigurerAdapter {
 
         return username -> {
 
-            if (username.equals("TECH5LDSInterceptor")) {
+            if (username.equals("interceptor.billing.tech5.ai")) {
 
                 return new User(username, "", AuthorityUtils.commaSeparatedStringToAuthorityList("SERVICE"));
 
@@ -41,6 +47,7 @@ public class SecurityManager extends WebSecurityConfigurerAdapter {
 
                 throw new UsernameNotFoundException("User: " + username + " not found.");
             }
+
         };
     }
 }

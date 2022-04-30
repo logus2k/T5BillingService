@@ -39,7 +39,22 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		implementation 'org.springframework.boot:spring-boot-starter-security:2.6.7'
+		implementation 'org.springframework.boot:spring-boot-starter-actuator'
+		developmentOnly 'org.springframework.boot:spring-boot-devtools'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testImplementation 'com.google.code.gson:gson'
 		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+
 
 		<!-- User Undertow Web Server -->
 		<dependency>
