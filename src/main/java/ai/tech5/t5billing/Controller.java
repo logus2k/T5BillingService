@@ -3,6 +3,7 @@ package ai.tech5.t5billing;
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,7 +68,7 @@ public class Controller {
 
     private Date getDateFromParameter(String time, String transactionId) {
 
-        Date date = new Date();
+        Date date;
 
         try {
 
@@ -75,6 +76,7 @@ public class Controller {
 
         } catch (Exception e) {
 
+            date = Date.from(Instant.now());
             logger.log(Level.INFO, transactionId + "Transaction " + transactionId + " -> timestamp format was not recognized: " + time + ": The billing transaction records was created using the Billing Server current time.");
         }
 
