@@ -1,11 +1,11 @@
 package ai.tech5.t5billing.entity;
 
+import javax.persistence.*;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="transactions")
@@ -15,55 +15,6 @@ public class TransactionEntry {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public int getNumberOfTransactions() {
-        return numberOfTransactions;
-    }
-
-    public void setNumberOfTransactions(int numberOfTransactions) {
-        this.numberOfTransactions = numberOfTransactions;
-    }
-
-    @Column(name = "no_of_transactions", nullable = true )
-    private int numberOfTransactions = 1;
-
-    @Column(name = "client_id", nullable = false)
-    private String clientId;
-
-    @Column(name = "transaction_status", nullable = true)
-    private String transactionStatus;
-    @Column(name = "application_id", nullable = false)
-    private String applicationId;
-    @Column(name = "transaction_id", nullable = false)
-    private String transactionId;
-    @Column(name = "transaction_time", nullable = false)
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
-    private Date transactionTime;
-    @Column(name = "created_at", nullable = false)
-    @CreatedDate
-    private Date createdAt = new Date();
-    @Column(name = "client_info", nullable = true)
-    private String clientInfo;
-
-    @Column(name = "host", nullable = true)
-    private String host;
-
-    @Column(name = "client_ip", nullable = true)
-    private String clientIP;
-
-
-
-    @Column(name = "transaction_type", nullable = true)
-    private String transactionType;
-
-    public String getClientInfo() {
-        return clientInfo;
-    }
-
-    public void setClientInfo(String clientInfo) {
-        this.clientInfo = clientInfo;
-    }
-
-
     public long getId() {
         return id;
     }
@@ -72,29 +23,9 @@ public class TransactionEntry {
         this.id = id;
     }
 
-    public String getClientId() {
-        return clientId;
-    }
 
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getTransactionStatus() {
-        return transactionStatus;
-    }
-
-    public void setTransactionStatus(String transactionStatus) {
-        this.transactionStatus = transactionStatus;
-    }
-
-    public String getApplicationId() {
-        return applicationId;
-    }
-
-    public void setApplicationId(String applicationId) {
-        this.applicationId = applicationId;
-    }
+    @Column(name = "transaction_id", nullable = false)
+    private String transactionId;
 
     public String getTransactionId() {
         return transactionId;
@@ -104,6 +35,11 @@ public class TransactionEntry {
         this.transactionId = transactionId;
     }
 
+
+    @Column(name = "transaction_time", nullable = false)
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
+    private Date transactionTime;
+
     public Date getTransactionTime() {
         return transactionTime;
     }
@@ -112,29 +48,45 @@ public class TransactionEntry {
         this.transactionTime = transactionTime;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+
+    @Column(name = "customer_id", nullable = false)
+    private String customerId;
+
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
-    public String getHost() {
-        return host;
+
+    @Column(name = "project_id", nullable = false)
+    private String projectId;
+
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setHost(String host) {
-        this.host = host;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
-    public String getClientIP() {
-        return clientIP;
+
+    @Column(name = "application_id", nullable = false)
+    private String applicationId;
+
+    public String getApplicationId() {
+        return applicationId;
     }
 
-    public void setClientIP(String clientIP) {
-        this.clientIP = clientIP;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
+
+
+    @Column(name = "transaction_type", nullable = false)
+    private String transactionType;
 
     public String getTransactionType() {
         return transactionType;
@@ -142,5 +94,66 @@ public class TransactionEntry {
 
     public void setTransactionType(String transactionType) {
         this.transactionType = transactionType;
+    }
+
+
+    @Column(name = "transactions_count", nullable = false )
+    private int transactionsCount = 0;
+
+    public int getTransactionsCount() {
+        return transactionsCount;
+    }
+
+    public void setTransactionsCount(int transactionsCount) {
+        this.transactionsCount = transactionsCount;
+    }
+
+
+    @Column(name = "host_name", nullable = true)
+    private String hostName;
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+
+    @Column(name = "client_ip", nullable = true)
+    private String clientIp;
+
+    public String getClientIp() {
+        return clientIp;
+    }
+
+    public void setClientIp(String clientIp) {
+        this.clientIp = clientIp;
+    }
+
+
+    @Column(name = "request_ip", nullable = true)
+    private String requestIp;
+
+    public String getRequestIp() {
+        return requestIp;
+    }
+
+    public void setRequestIp(String requestIp) {
+        this.requestIp = requestIp;
+    }
+
+
+    @Column(name = "created_at", nullable = false)
+    @CreatedDate
+    private Date createdAt = new Date();
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

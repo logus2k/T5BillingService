@@ -39,7 +39,7 @@ public class SecurityManager extends WebSecurityConfigurerAdapter {
 
                 return new User(username, "", AuthorityUtils.commaSeparatedStringToAuthorityList("SERVICE"));
 
-            } else if (username.equals("Antonio Cruz")) {
+            } else if (username.equals("John Doe")) {
 
                 return new User(username, "", AuthorityUtils.commaSeparatedStringToAuthorityList("SYSADMIN"));
 
