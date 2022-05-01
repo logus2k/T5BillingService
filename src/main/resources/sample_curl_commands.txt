@@ -1,2 +1,8 @@
-# Uses latest Windows version of curl. Avoid bundled Windows 11 version by using an absolute path (Powershell prompt):
+# &"C:\Program Files\curl\bin\curl.exe" invokes latest Windows version of curl. Avoid bundled Windows 11 version by using an absolute path (Powershell prompt):
+
 &"C:\Program Files\curl\bin\curl.exe" -v --cacert '.\tech5billing.com.CA.crt' 'https://tech5billing.com:10443/version'
+
+&"C:\Program Files\curl\bin\curl.exe" --cacert '.\tech5lds.crt.pem' 'https://tech5lds.com:9443/check_liveness?data' -F 'Data=@"C:\Users\logus\Desktop\face.jpg"'
+
+&"C:\Program Files\curl\bin\curl.exe" -v --cacert '.\tech5billing.com.CA.crt' --key client.tech5billing.com.CA.key --cert '.\client.tech5billing.com.CA.crt' 'https://tech5billing.com:10443/transaction?tid=f8827c58-23d5-406a-97d9-b9f3796442d3&time=2022-05-01T00:00:43.520517500Z&cid=PAU&appId=LDS&nt=1&host=null'
+
