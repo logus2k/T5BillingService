@@ -5,7 +5,7 @@
 ## openssl - https://www.openssl.org/docs/man3.0/man1/
 
 
-# SERVER KEY, CERTIFICATE, KEY STORE, AND TRUST STORE GENERATION COMMANDS
+# SERVER KEY, CERTIFICATE, KEY STORE, AND TRUST STORE GENERATION
 
 ## 1. Generate a private RSA key and a X509 certificate, in one step:
 openssl req -x509 -newkey rsa:4096 -sha256 -days 10950 -nodes -keyout tech5billing.com.CA.key -out tech5billing.com.CA.crt -subj '/CN=tech5billing.com' -addext 'subjectAltName=DNS:tech5billing.com,DNS:www.tech5billing.com,IP:127.0.0.1'
@@ -23,7 +23,7 @@ keytool -import -alias tech5billing.com -file tech5billing.com.CA.crt -keystore 
 keytool -importkeystore -srckeystore tech5billing.com.truststore.p12 -srcstoretype pkcs12 -srcstorepass Tech5! -destkeystore tech5billing.com.truststore.jks -deststoretype jks -deststorepass Tech5! -alias tech5billing.com
 
 
-## CLIENT KEY, CERTIFICATE, KEY STORE, AND TRUST STORE GENERATION COMMANDS
+## CLIENT KEY, CERTIFICATE, KEY STORE, AND TRUST STORE GENERATION
 
 ## 1. Generate a private RSA key and a X509 certificate, in one step:
 openssl req -x509 -newkey rsa:4096 -sha256 -days 10950 -nodes -keyout client.tech5billing.com.CA.key -out client.tech5billing.com.CA.crt -subj '/CN=clienttech5billing.com' -addext 'subjectAltName=DNS:clienttech5billing.com,DNS:www.clienttech5billing.com,IP:127.0.0.1'

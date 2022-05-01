@@ -34,3 +34,6 @@ build/
 
 ### Backup
 t5billingV2.zip
+
+### Notes
+src/main/resources/sample_curl_commands.txt
